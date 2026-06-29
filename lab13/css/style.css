@@ -1,0 +1,481 @@
+/* --- Загальні налаштування та Змінні --- */
+:root {
+    --primary-color: #6366f1;
+    --primary-hover: #4f46e5;
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-color: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #cbd5e1;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 0 20px;
+}
+
+/* --- Шапка та Навігація --- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* Відступ між картинкою та написом Full Stack Developer */
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+.logo-img {
+    width: 55px;
+    /* Чітка ширина з Figma */
+    height: 55px;
+    /* Чітка висота з Figma */
+    object-fit: cover;
+    /* Захищає фото від деформації та стискання */
+    border-radius: 50px;
+    /* Робить фото круглим (якщо потрібно за дизайном) */
+    transition: var(--transition);
+    /* Щоб додати ефект при наведенні */
+}
+
+.logo span {
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-left: 8px;
+}
+
+.nav {
+    display: flex;
+    gap: 24px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    position: relative;
+    transition: var(--transition);
+}
+
+/* Ефект hover лінії під посиланнями меню */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+/* --- Кнопки (Всі стани миші) --- */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+/* Ефекти наведення для основної кнопки */
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: #f1f5f9;
+    border-color: var(--text-muted);
+}
+
+.btn-header {
+    background-color: #1e293b;
+    color: #ffffff;
+    font-size: 0.9rem;
+    padding: 8px 16px;
+}
+
+.btn-header:hover {
+    background-color: var(--primary-color);
+}
+
+/* --- ГОЛОВНА GRID СТРУКТУРА КОНТЕНТУ --- */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Дві однакові колонки для десктопу */
+    gap: 50px;
+    max-width: 1200px;
+    margin: 50px auto;
+    align-items: center;
+}
+
+/* --- СТИЛІ СТОРІНКИ 1: INDEX.HTML --- */
+.hero-text h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin: 10px 0;
+}
+
+.hero-text h1 span {
+    color: var(--primary-color);
+}
+
+.badge {
+    align-self: flex-start;
+    background-color: #e0e7ff;
+    color: var(--primary-color);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.description {
+    color: var(--text-muted);
+}
+
+.hero-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+/* Контейнер з ноутбуком та картками */
+.hero-image-container {
+    position: relative;
+    height: 380px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mockup-bg {
+    width: 85%;
+    height: 65%;
+    background: #e2e8f0;
+    border-radius: 12px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Анімація плавного погойдування (floating) для карток */
+.tech-card {
+    position: absolute;
+    background: var(--card-bg);
+    padding: 10px 16px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+    font-weight: 600;
+    font-size: 0.85rem;
+    animation: floatCard 4s ease-in-out infinite;
+}
+
+.card-html {
+    top: 10%;
+    left: 5%;
+}
+
+.card-js {
+    top: 15%;
+    right: 5%;
+    animation-delay: 1s;
+}
+
+.card-git {
+    bottom: 15%;
+    left: 0%;
+    animation-delay: 2s;
+}
+
+.card-responsive {
+    bottom: 10%;
+    right: 0%;
+    animation-delay: 3s;
+}
+
+@keyframes floatCard {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* Панель статистики внизу */
+.hero-stats {
+    grid-column: 1 / span 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background: var(--card-bg);
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+    border: 1px solid #f1f5f9;
+    text-align: center;
+}
+
+.status-badge {
+    background-color: #dcfce7;
+    color: #15803d;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+/* --- СТИЛІ СТОРІНКИ 2: ABOUT.HTML --- */
+.about-image-wrapper {
+    position: relative;
+    text-align: center;
+}
+
+.photo-placeholder {
+    max-width: 320px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-img {
+    width: 100%;
+    display: block;
+}
+
+.photo-caption {
+    margin-top: 15px;
+}
+
+.section-desc {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.main-bio {
+    color: var(--text-muted);
+    margin-bottom: 25px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.info-card {
+    background: var(--card-bg);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+/* --- СТИЛІ СТОРІНКИ 3: CONTACTS.HTML --- */
+.contact-list {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.contact-list li {
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+}
+
+.contact-list a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.contact-list a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+.status-active {
+    color: #2563eb;
+    font-weight: 500;
+}
+
+.contact-form {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: var(--transition);
+}
+
+/* Стан поля вводу при фокусі (кліку) */
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.btn-submit {
+    width: 100%;
+}
+
+/* ==========================================================================
+   АДАПТИВНІСТЬ ДЛЯ МОБІЛЬНИХ ПРИСТРОЇВ (ПЕРЕБУДОВА В 1 КОЛОНКУ)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav {
+        gap: 15px;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+        /* Колонки шикуються одна під одну */
+        gap: 40px;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-actions,
+    .hero-text .badge {
+        justify-content: center;
+        align-self: center;
+    }
+
+    .hero-image-container {
+        height: auto;
+        display: block;
+        /* Скидаємо абсолютне позиціонування карток */
+    }
+
+    .mockup-bg {
+        display: none;
+        /* Ховаємо пустий фон ноутбука на мобілках */
+    }
+
+    .tech-card {
+        position: static;
+        display: inline-block;
+        margin: 6px;
+        animation: none;
+    }
+
+    .hero-stats {
+        grid-column: 1;
+        grid-template-columns: 1fr;
+        /* Статистика теж стає в ряд */
+        gap: 15px;
+    }
+
+    .info-grid {
+        text-align: left;
+    }
+}
+.form-group input,
+.form-group textarea {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    /* Звичайний колір тексту */
+    outline: none;
+    transition: var(--transition);
+}
+
+/* 1. Стан при НАВЕДЕННІ миші (hover) */
+.form-group input:hover,
+.form-group textarea:hover {
+    border-color: #846FFF;
+    /* Зміна кольору рамки при наведенні */
+    color: #846FFF;
+    /* Зміна кольору тексту, який вводиться, на #846FFF */
+}
+
+/* 2. Стан при КЛІКУ всередину поля (focus) */
+/* Щоб колір тексту залишався фіолетовим, поки користувач пише текст */
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #846FFF;
+    color: #846FFF;
+    box-shadow: 0 0 0 3px rgba(132, 111, 255, 0.15);
+    /* М'яке світіння навколо поля */
+}

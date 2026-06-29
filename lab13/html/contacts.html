@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сергій Михайлюк | Контакти</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo"><img class="logo-img" src="../images/Logo.png" alt="<S.M>"> <span>Full Stack Developer</span></div>
+        <nav class="nav">
+            <a href="profile.html" class="nav-link">Головна</a>
+            <a href="hero.html" class="nav-link">Про мене</a>
+            <a href="#portfolio" class="nav-link">Портфоліо</a>
+            <a href="contacts.html" class="nav-link active">Контакти</a>
+        </nav>
+        <a href="contacts.html" class="btn btn-header">Зв'язатися</a>
+    </header>
+
+    <main class="grid-container contact-section">
+        <div class="contact-info">
+            <h2>Контакти</h2>
+            <p class="contact-subtitle">Якщо вас зацікавило моє портфоліо або ви хочете обговорити співпрацю, зв'яжіться
+                зі мною:</p>
+
+            <ul class="contact-list">
+                <li><strong>Email:</strong> <a
+                        href="mailto:serhii.mykhailiuk.23@pnu.edu.ua">serhii.mykhailiuk.23@pnu.edu.ua</a></li>
+                <li><strong>Telegram:</strong> <a href="https://t.me/Developer" target="_blank">@Developer</a></li>
+                <li><strong>GitHub:</strong> <a href="https://github.com/serhiimykhailiuk23"
+                        target="_blank">serhiimykhailiuk23</a></li>
+                <li><strong>Location:</strong> Україна, Івано-Франківськ</li>
+                <li><strong>Статус:</strong> <span class="status-active">Відкритий до співпраці</span></li>
+            </ul>
+        </div>
+
+        <div class="contact-form-wrapper">
+            <form class="contact-form" action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Ім'я</label>
+                    <input type="text" id="name" name="name" placeholder="Ваше ім'я" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Електронна адреса</label>
+                    <input type="email" id="email" name="email" placeholder="Your_email@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Тема повідомлення</label>
+                    <input type="text" id="subject" name="subject" placeholder="Тема розмови" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Повідомлення</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Текст вашого повідомлення..."
+                        required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-submit">Надіслати повідомлення</button>
+            </form>
+        </div>
+    </main>
+
+</body>
+
+</html>
